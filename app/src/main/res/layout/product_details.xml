@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/bookTitle"
+        style="@style/detail_style" />
+
+    <TextView
+        android:id="@+id/bookAuthor"
+        style="@style/detail_style" />
+
+    <TextView
+        android:id="@+id/bookPrice"
+        style="@style/detail_style" />
+
+    <TextView
+        android:id="@+id/bookQuantity"
+        style="@style/detail_style" />
+
+    <TextView
+        android:id="@+id/bookSupplier"
+        style="@style/detail_style" />
+
+    <TextView
+        android:id="@+id/bookSupPhone"
+        style="@style/detail_style" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/medium_spacing">
+
+        <Button
+            android:id="@+id/increase"
+            style="@style/button_style"
+            android:text="@string/increase_button" />
+
+        <Button
+            android:id="@+id/decrease"
+            style="@style/button_style"
+            android:text="@string/decrease_button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/medium_spacing">
+
+        <Button
+            android:id="@+id/order"
+            style="@style/button_style"
+            android:text="@string/order_button" />
+
+        <Button
+            android:id="@+id/delete"
+            style="@style/button_style"
+            android:text="@string/delete_button" />
+
+    </LinearLayout>
+
+</RelativeLayout>

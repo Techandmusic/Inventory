@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/addTitle"
+        style="@style/InputStyle"
+        android:hint="@string/title_field"
+        android:inputType="textCapWords" />
+
+    <EditText
+        android:id="@+id/addAuthor"
+        style="@style/InputStyle"
+        android:hint="@string/author_field"
+        android:inputType="textCapWords" />
+
+    <EditText
+        android:id="@+id/addPrice"
+        style="@style/InputStyle"
+        android:hint="@string/price_field"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/addQuantity"
+        style="@style/InputStyle"
+        android:hint="@string/quantity_field"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/addSupplierName"
+        style="@style/InputStyle"
+        android:hint="@string/supplier_name_field"
+        android:inputType="textCapWords" />
+
+    <EditText
+        android:id="@+id/addSupplierNo"
+        style="@style/InputStyle"
+        android:hint="@string/supplier_phone_field"
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/medium_spacing"
+        android:text="@string/save_button_text" />
+
+</LinearLayout>

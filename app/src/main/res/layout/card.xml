@@ -9,9 +9,6 @@
         android:id="@+id/productName"
         style="@style/list_item_style" />
 
-    <TextView
-        android:id="@+id/authorName"
-        style="@style/list_item_style"/>
 
     <TextView
         android:id="@+id/productPrice"
