@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/medium_spacing">
+
+    <TextView
+        android:id="@+id/productName"
+        style="@style/list_item_style" />
+
+    <TextView
+        android:id="@+id/authorName"
+        style="@style/list_item_style"/>
+
+    <TextView
+        android:id="@+id/productPrice"
+        style="@style/list_item_style"
+        android:layout_below="@id/productName" />
+
+    <TextView
+        android:id="@+id/productQuantity"
+        style="@style/list_item_style"
+        android:layout_below="@id/productPrice" />
+
+    <Button
+        android:id="@+id/sale"
+        style="@style/button_style"
+        android:layout_alignParentRight="true"
+        android:text="@string/sale_button" />
+
+</RelativeLayout>
