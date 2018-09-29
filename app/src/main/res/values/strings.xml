@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Binary Books</string>
+    <string name="dummy">INSERT DUMMY DATA</string>
+    <string name="show">SHOW DATA</string>
+    <string name="title_field">Title</string>
+    <string name="author_field">Author</string>
+    <string name="price_field">Price</string>
+    <string name="quantity_field">Quantity</string>
+    <string name="supplier_name_field">Supplier Name</string>
+    <string name="supplier_phone_field">Supplier Phone No</string>
+    <string name="save_error">Error with saving book</string>
+    <string name="save_successful">Book saved with row id: </string>
+    <string name="confirm_delete">Delete this book?</string>
+    <string name="delete_dialog_option">Delete</string>
+    <string name="negative_dialog_option">Cancel</string>
+    <string name="delete_successful">Book deleted</string>
+    <string name="delete_failed">Error with deleting book</string>
+    <string name="increase_button">Increase Quantity</string>
+    <string name="decrease_button">Decrease Quantity</string>
+    <string name="order_button">Order</string>
+    <string name="delete_button">Delete</string>
+    <string name="sale_button">Sale</string>
+    <string name="default_text">Tap Add Button to Add Items</string>
+    <string name="zero_error">Quantity cannot be less than zero!</string>
+    <string name="save_button_text">SAVE</string>
+    <string name="new_book">Add New Book</string>
+    <string name="edit_book">Edit Book Info</string>
+
+</resources>
