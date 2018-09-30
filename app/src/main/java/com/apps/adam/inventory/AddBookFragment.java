@@ -1,9 +1,10 @@
 package com.apps.adam.inventory;
 
+import android.app.Fragment;
 import android.content.ContentValues;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +12,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.apps.adam.inventory.data.BookDbHelper;
 import com.apps.adam.inventory.data.BookContract.BookEntry;
 
-import com.apps.adam.inventory.data.BookDbHelper;
-
-public class EditorFragment extends Fragment {
+public class AddBookFragment extends Fragment {
     //EditText field to add book title
     private EditText mTitle;
     //EditText field to add book author
@@ -37,23 +37,18 @@ public class EditorFragment extends Fragment {
     private Uri mCurrentBookUri;
     //Layout inflater
     private LayoutInflater inflater;
+    //Context variable
+    private Context mContext;
 
-    //Constructor
-    public EditorFragment() {
-        //Required empty constructor
+
+    //Constructor method
+    public AddBookFragment() {
+        //Empty constructor
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-         /* if (getArguments() != null) {
-            get data from bundle
-            to pass to this fragment
-
-        } */
-
-
-
+    public Context getmContext() {
+        mContext = this.getActivity();
+        return mContext;
     }
 
     @Override
@@ -70,7 +65,7 @@ public class EditorFragment extends Fragment {
         return view;
     }
 
-    public void saveBookInfo() {
+    public void addBook() {
         //Get values from EditText fields
         String titleString = mTitle.getText().toString().trim();
         String authorString = mAuthor.getText().toString().trim();
@@ -106,12 +101,13 @@ public class EditorFragment extends Fragment {
         values.put(BookEntry.COLUMN_SUPPLIER_NAME, supNameString);
         values.put(BookEntry.COLUMN_SUPPLIER_PHONE, supPhoneString);
 
-        rowsAffected = getContext().getContentResolver().update(mCurrentBookUri, values, null, null);
-
-        if (rowsAffected == 0) {
-            Toast.makeText(getContext(), getString(R.string.save_error), Toast.LENGTH_SHORT).show();
+        Uri newUri = getmContext().getContentResolver().insert(BookEntry.CONTENT_URI, values);
+        if (newUri == null) {
+            Toast.makeText(getmContext(), getString(R.string.save_error), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getContext(), getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getmContext(), getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
         }
+
+
     }
 }

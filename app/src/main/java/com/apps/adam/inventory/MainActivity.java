@@ -10,4 +10,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    public void getBookDetails() {
+
+
+        //Get full book details from database
+        //return bundle to pass to Details fragment
+        Bundle bundle = new Bundle();
+
+
+    }
 }
