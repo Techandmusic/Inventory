@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,7 +29,6 @@ public class AddBookFragment extends Fragment {
     private EditText mSupplierName;
     //EditText field to add supplier's phone number
     private EditText mSupplierNo;
-    //Variable for rows affected when adding a new book
     //Variable for rows affected when adding a new book
     int rowsAffected;
     //Database helper instance
@@ -61,6 +61,14 @@ public class AddBookFragment extends Fragment {
         mQuantity = view.findViewById(R.id.addQuantity);
         mSupplierName = view.findViewById(R.id.addSupplierName);
         mSupplierNo = view.findViewById(R.id.addSupplierNo);
+        //Add logic to save button
+        Button saveButton = (Button) view.findViewById(R.id.saveButton);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addBook();
+            }
+        });
         //Return view
         return view;
     }
