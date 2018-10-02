@@ -1,22 +1,17 @@
 package com.apps.adam.inventory;
 
-import android.app.Fragment;
 import android.content.ContentValues;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.apps.adam.inventory.data.BookDbHelper;
 import com.apps.adam.inventory.data.BookContract.BookEntry;
 
-public class AddBookFragment extends Fragment {
+public class AddBookActivity extends AppCompatActivity {
     //EditText field to add book title
     private EditText mTitle;
     //EditText field to add book author
@@ -31,46 +26,29 @@ public class AddBookFragment extends Fragment {
     private EditText mSupplierNo;
     //Variable for rows affected when adding a new book
     int rowsAffected;
-    //Database helper instance
-    private BookDbHelper mDbHelper;
     //Variable for current book uri
     private Uri mCurrentBookUri;
-    //Layout inflater
-    private LayoutInflater inflater;
-    //Context variable
-    private Context mContext;
-
-
-    //Constructor method
-    public AddBookFragment() {
-        //Empty constructor
-    }
-
-    public Context getmContext() {
-        mContext = this.getActivity();
-        return mContext;
-    }
-
+    
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.editor, parent, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.editor);
         //Set TextViews to xml layout
-        mTitle = view.findViewById(R.id.addTitle);
-        mAuthor = view.findViewById(R.id.addAuthor);
-        mPrice = view.findViewById(R.id.addPrice);
-        mQuantity = view.findViewById(R.id.addQuantity);
-        mSupplierName = view.findViewById(R.id.addSupplierName);
-        mSupplierNo = view.findViewById(R.id.addSupplierNo);
-        //Add logic to save button
-        Button saveButton = (Button) view.findViewById(R.id.saveButton);
+        mTitle = findViewById(R.id.addTitle);
+        mAuthor = findViewById(R.id.addAuthor);
+        mPrice = findViewById(R.id.addPrice);
+        mQuantity = findViewById(R.id.addQuantity);
+        mSupplierName = findViewById(R.id.addSupplierName);
+        mSupplierNo = findViewById(R.id.addSupplierNo);
+        Button saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addBook();
             }
         });
-        //Return view
-        return view;
+
+        
     }
 
     public void addBook() {
@@ -109,11 +87,11 @@ public class AddBookFragment extends Fragment {
         values.put(BookEntry.COLUMN_SUPPLIER_NAME, supNameString);
         values.put(BookEntry.COLUMN_SUPPLIER_PHONE, supPhoneString);
 
-        Uri newUri = getmContext().getContentResolver().insert(BookEntry.CONTENT_URI, values);
+        Uri newUri = this.getContentResolver().insert(BookEntry.CONTENT_URI, values);
         if (newUri == null) {
-            Toast.makeText(getmContext(), getString(R.string.save_error), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.save_error), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getmContext(), getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
         }
 
 
