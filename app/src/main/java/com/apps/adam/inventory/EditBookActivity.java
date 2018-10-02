@@ -3,19 +3,18 @@ package com.apps.adam.inventory;
 import android.content.ContentValues;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.apps.adam.inventory.data.BookContract.BookEntry;
-
 import com.apps.adam.inventory.data.BookDbHelper;
 
-public class EditorFragment extends Fragment {
+public class EditBookActivity extends AppCompatActivity {
     //EditText field to add book title
     private EditText mTitle;
     //EditText field to add book author
@@ -35,42 +34,30 @@ public class EditorFragment extends Fragment {
     private BookDbHelper mDbHelper;
     //Variable for current book uri
     private Uri mCurrentBookUri;
-    //Layout inflater
-    private LayoutInflater inflater;
-
-    //Constructor
-    public EditorFragment() {
-        //Required empty constructor
-    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         /* if (getArguments() != null) {
-            get data from bundle
-            to pass to this fragment
+        setContentView(R.layout.editor);
 
-        } */
-
-
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.editor, parent, false);
         //Set TextViews to xml layout
-        mTitle = view.findViewById(R.id.addTitle);
-        mAuthor = view.findViewById(R.id.addAuthor);
-        mPrice = view.findViewById(R.id.addPrice);
-        mQuantity = view.findViewById(R.id.addQuantity);
-        mSupplierName = view.findViewById(R.id.addSupplierName);
-        mSupplierNo = view.findViewById(R.id.addSupplierNo);
-        //Return view
-        return view;
+        mTitle = findViewById(R.id.addTitle);
+        mAuthor = findViewById(R.id.addAuthor);
+        mPrice = findViewById(R.id.addPrice);
+        mQuantity = findViewById(R.id.addQuantity);
+        mSupplierName = findViewById(R.id.addSupplierName);
+        mSupplierNo = findViewById(R.id.addSupplierNo);
+        Button saveButton = (Button) findViewById(R.id.saveButton);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
-    public void saveBookInfo() {
+    public void saveBook() {
         //Get values from EditText fields
         String titleString = mTitle.getText().toString().trim();
         String authorString = mAuthor.getText().toString().trim();
@@ -106,12 +93,20 @@ public class EditorFragment extends Fragment {
         values.put(BookEntry.COLUMN_SUPPLIER_NAME, supNameString);
         values.put(BookEntry.COLUMN_SUPPLIER_PHONE, supPhoneString);
 
-        rowsAffected = getContext().getContentResolver().update(mCurrentBookUri, values, null, null);
-
-        if (rowsAffected == 0) {
-            Toast.makeText(getContext(), getString(R.string.save_error), Toast.LENGTH_SHORT).show();
+        Uri newUri = getContentResolver().insert(BookEntry.CONTENT_URI, values);
+        if (newUri == null) {
+            Toast.makeText(this, getString(R.string.save_error), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getContext(), getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
+        }
+
+        rowsAffected = getContentResolver().update(mCurrentBookUri, values, null, null);
+
+        //Display toast message to show if save was successful or not
+        if (rowsAffected == 0) {
+            Toast.makeText(this, getString(R.string.save_error), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
         }
     }
 }
