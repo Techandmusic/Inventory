@@ -1,19 +1,16 @@
 package com.apps.adam.inventory;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-import android.support.design.widget.FloatingActionButton;
+
 import com.apps.adam.inventory.data.BookContract.BookEntry;
 import com.apps.adam.inventory.data.BookDbHelper;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -22,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ArrayList<Card> cards;
-
-    private RecyclerView.LayoutManager layout;
 
     private TextView emptyText;
 
@@ -36,32 +31,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Database helper instance
-        mDbHelper = new  BookDbHelper(this);
+        mDbHelper = new BookDbHelper(this);
 
         //Empty TextView
         emptyText = (TextView) findViewById(R.id.defaultText);
-        //Initialize layout manager if needed
-        layout = new RecyclerView.LayoutManager() {
-            @Override
-            public RecyclerView.LayoutParams generateDefaultLayoutParams() {
-                return null;
-            }
-        };
-        //Create RecyclerView set fixed size and layout manager
-        RecyclerView recycle = (RecyclerView) findViewById(R.id.recycler);
-        recycle.setHasFixedSize(true);
-        recycle.setLayoutManager(layout);
-        //Create ArrayList of cards
-        cards = new ArrayList<>();
+
         //Get data and load into cards ArrayList
         fetchData();
-        //Create RecyclerView adapter and set it to the RecyclerView
-        CardAdapter adapter = new CardAdapter(this, cards);
-        recycle.setAdapter(adapter);
-        if (adapter.getItemCount() > 0) {
+        //TODO possibly refactor fetchData. BookListFragment Needs access to Cards ArrayList
+
+
+        if (cards.size() > 0) {
             emptyText.setVisibility(View.GONE);
+            fragMan = getFragmentManager();
+            FragmentTransaction initialTransaction = fragMan.beginTransaction();
+            BookListFragment bookList = new BookListFragment();
+            initialTransaction.add(R.id.mainLayout, bookList);
         } else {
-            emptyText.setVisibility(View.VISIBLE);
+            emptyText.setText(View.VISIBLE);
         }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
