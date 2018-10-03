@@ -11,6 +11,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import static com.apps.adam.inventory.data.BookContract.PATH_BOOKS;
+
 public class BookProvider extends ContentProvider {
     //Tag for log messages
     public static final String LOG_TAG = BookProvider.class.getSimpleName();
@@ -23,8 +25,8 @@ public class BookProvider extends ContentProvider {
 
     //Static initializer
     static {
-        sUriMatcher.addURI(BookContract.CONTENT_AUTHORITY, BookContract.PATH_BOOKS, BOOKS);
-        sUriMatcher.addURI(BookContract.CONTENT_AUTHORITY, BookContract.PATH_BOOKS + "/#", BOOK_ID);
+        sUriMatcher.addURI(BookContract.CONTENT_AUTHORITY, PATH_BOOKS, BOOKS);
+        sUriMatcher.addURI(BookContract.CONTENT_AUTHORITY, PATH_BOOKS+"/#", BOOK_ID);
     }
 
     //Initializer provider and database helper
