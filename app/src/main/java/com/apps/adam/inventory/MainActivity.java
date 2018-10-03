@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent addBookIntent = new Intent(MainActivity.this, AddBookActivity.class);
+                startActivity(addBookIntent);
 
             }
         });
