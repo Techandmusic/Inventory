@@ -39,7 +39,7 @@ public class EditBookActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editor);
-
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         //Set TextViews to xml layout
         mTitle = findViewById(R.id.addTitle);
         mAuthor = findViewById(R.id.addAuthor);

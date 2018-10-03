@@ -32,6 +32,7 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_details);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         //Set TextViews to xml layout
         bookTitle = findViewById(R.id.bookTitle);
         bookAuthor = findViewById(R.id.bookAuthor);

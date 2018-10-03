@@ -25,5 +25,6 @@
     <string name="save_button_text">SAVE</string>
     <string name="new_book">Add New Book</string>
     <string name="edit_book">Edit Book Info</string>
+    <string name="details">Book Details</string>
 
 </resources>
