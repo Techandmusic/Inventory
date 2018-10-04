@@ -2,6 +2,7 @@
 <resources>
     <dimen name="medium_spacing">16dp</dimen>
     <dimen name="small_spacing">8dp</dimen>
+    <dimen name="corners">4dp</dimen>
     <dimen name="max_width">250dp</dimen>
     <dimen name="jumbo_spacing">48dp</dimen>
 

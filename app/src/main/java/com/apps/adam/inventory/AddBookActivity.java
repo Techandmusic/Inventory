@@ -9,9 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.apps.adam.inventory.data.BookContract.BookEntry;
 
 public class AddBookActivity extends AppCompatActivity {
+    //Variable for rows affected when adding a new book
+    int rowsAffected;
     //EditText field to add book title
     private EditText mTitle;
     //EditText field to add book author
@@ -24,16 +27,14 @@ public class AddBookActivity extends AppCompatActivity {
     private EditText mSupplierName;
     //EditText field to add supplier's phone number
     private EditText mSupplierNo;
-    //Variable for rows affected when adding a new book
-    int rowsAffected;
     //Variable for current book uri
     private Uri mCurrentBookUri;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editor);
-       // getActionBar().setDisplayHomeAsUpEnabled(true);
+        // getActionBar().setDisplayHomeAsUpEnabled(true);
         //Set TextViews to xml layout
         mTitle = findViewById(R.id.addTitle);
         mAuthor = findViewById(R.id.addAuthor);
@@ -49,7 +50,7 @@ public class AddBookActivity extends AppCompatActivity {
             }
         });
 
-        
+
     }
 
     public void addBook() {

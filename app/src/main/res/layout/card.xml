@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/medium_spacing">
+    android:layout_height="@dimen/max_width"
+    android:layout_gravity="center"
+    android:layout_marginLeft="@dimen/small_spacing"
+    android:layout_marginTop="@dimen/corners"
+    android:layout_marginRight="@dimen/small_spacing"
+    android:layout_marginBottom="@dimen/medium_spacing"
+    card_view:cardCornerRadius="@dimen/corners">
 
-    <TextView
-        android:id="@+id/productName"
-        style="@style/list_item_style" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/medium_spacing">
+
+        <TextView
+            android:id="@+id/productName"
+            style="@style/list_item_style" />
 
 
-    <TextView
-        android:id="@+id/productPrice"
-        style="@style/list_item_style"
-        android:layout_below="@id/productName" />
+        <TextView
+            android:id="@+id/productPrice"
+            style="@style/list_item_style"
+            android:layout_below="@id/productName" />
 
-    <TextView
-        android:id="@+id/productQuantity"
-        style="@style/list_item_style"
-        android:layout_below="@id/productPrice" />
+        <TextView
+            android:id="@+id/productQuantity"
+            style="@style/list_item_style"
+            android:layout_below="@id/productPrice" />
 
-    <Button
-        android:id="@+id/sale"
-        style="@style/button_style"
-        android:layout_alignParentRight="true"
-        android:text="@string/sale_button" />
+        <Button
+            android:id="@+id/sale"
+            style="@style/button_style"
+            android:layout_alignParentRight="true"
+            android:text="@string/sale_button" />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

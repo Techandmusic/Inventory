@@ -1,13 +1,9 @@
 package com.apps.adam.inventory;
 
-import android.app.LoaderManager;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -19,13 +15,11 @@ import com.apps.adam.inventory.data.BookDbHelper;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     private RecyclerView.LayoutManager layout;
 
     private ArrayList<Card> cards;
-
-
 
 
     private BookDbHelper mDbHelper;
@@ -62,6 +56,7 @@ public class MainActivity extends AppCompatActivity  {
 
         if (adapter.getItemCount() > 0) {
             emptyText.setVisibility(View.GONE);
+            recycle.setVisibility(View.VISIBLE);
 
         } else {
             emptyText.setVisibility(View.VISIBLE);
@@ -123,60 +118,5 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-    public void getBookDetails() {
 
-
-        //Get full book details from database
-        //return bundle to pass to Details fragment
-        Bundle bundle = new Bundle();
-
-
-    }
-
-
-  /*  @Override
-    public Loader onCreateLoader(int id, Bundle args) {
-        //Projection of columns to load
-        String[] projection = {
-                BookEntry._ID,
-                BookEntry.COLUMN_PRODUCT_NAME,
-                BookEntry.COLUMN_AUTHOR_NAME,
-                BookEntry.COLUMN_PRICE,
-                BookEntry.COLUMN_QUANTITY,
-                BookEntry.COLUMN_SUPPLIER_NAME,
-                BookEntry.COLUMN_SUPPLIER_PHONE};
-        //Cursor of data loaded from database
-        return new CursorLoader(this, BookEntry.CONTENT_URI, projection, null, null, null);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        if (cursor == null) {
-            return;
-        } else {
-            while (cursor.moveToNext()) {
-                //Get column indices
-                int idColumnIndex = cursor.getColumnIndex(BookEntry._ID);
-                int titleColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_NAME);
-                int authorColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_AUTHOR_NAME);
-                int priceColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRICE);
-                int quantityColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_QUANTITY);
-                int supNameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_SUPPLIER_NAME);
-                int supPhoneColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_SUPPLIER_PHONE);
-                //Extract indices to appropriate variables
-                int id = cursor.getInt(idColumnIndex);
-                String bookTitle = cursor.getString(titleColumnIndex);
-                String bookAuthor = cursor.getString(authorColumnIndex);
-                Double bookPrice = cursor.getDouble(priceColumnIndex);
-                int bookQuantity = cursor.getInt(quantityColumnIndex);
-                String bookSupName = cursor.getString(supNameColumnIndex);
-                String bookSupPhone = cursor.getString(supPhoneColumnIndex);
-                //Add to new card object in cards arraylist
-                cards.add(new Card(id, bookTitle, bookAuthor, bookPrice, bookQuantity, bookSupName, bookSupPhone));
-    }
-
-    @Override
-    public void onLoaderReset(Loader loader) {
-        loader = null;
-    } */
 }

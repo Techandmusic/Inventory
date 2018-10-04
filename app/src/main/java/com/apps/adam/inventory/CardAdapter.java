@@ -1,7 +1,6 @@
 package com.apps.adam.inventory;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +18,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder> {
         this.inflater = LayoutInflater.from(context);
         this.cards = cards;
     }
-
 
 
     @Override
