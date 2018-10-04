@@ -18,10 +18,10 @@ public class BookDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //String used to declare columns of table
-        String SQL_CREATE_BOOKS_TABLE = "CREATE TABLE " + BookEntry.TABLE_NAME + " ("
+        String SQL_CREATE_BOOKS_TABLE = " CREATE TABLE " + BookEntry.TABLE_NAME + " ("
                 + BookEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + BookEntry.COLUMN_PRODUCT_NAME + " TEXT, "
-                + BookEntry.COLUMN_AUTHOR_NAME + "TEXT,"
+                + BookEntry.COLUMN_AUTHOR_NAME + " TEXT, "
                 + BookEntry.COLUMN_PRICE + " REAL, "
                 + BookEntry.COLUMN_QUANTITY + " INTEGER, "
                 + BookEntry.COLUMN_SUPPLIER_NAME + " TEXT, "
