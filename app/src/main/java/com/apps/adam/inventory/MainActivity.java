@@ -32,22 +32,23 @@ public class MainActivity extends AppCompatActivity {
         mDbHelper = new BookDbHelper(this);
         //Empty TextView
         TextView emptyText = (TextView) findViewById(R.id.defaultText);
-        //Initialize layout manager if needed
+        //Create ArrayList of cards
+        cards = new ArrayList<>();
+        //CreateRecyclerView
+        RecyclerView recycle = (RecyclerView) findViewById(R.id.recycler);
+        //Initialize layout manager
         layout = new RecyclerView.LayoutManager() {
             @Override
             public RecyclerView.LayoutParams generateDefaultLayoutParams() {
                 return null;
             }
         };
-        //Create ArrayList of cards
-        cards = new ArrayList<>();
-        //Create RecyclerView set fixed size and layout manager
-        RecyclerView recycle = (RecyclerView) findViewById(R.id.recycler);
-        recycle.setHasFixedSize(true);
-        recycle.setLayoutManager(layout);
         //Create RecyclerView adapter and set it to the RecyclerView
         CardAdapter adapter = new CardAdapter(this, cards);
         recycle.setAdapter(adapter);
+        //Set has fixed size value and layout manager
+        recycle.setHasFixedSize(true);
+        recycle.setLayoutManager(layout);
 
 
         //Get data and load into cards ArrayList
