@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Card> cards;
 
+    public CardAdapter mAdapter;
+
 
     private BookDbHelper mDbHelper;
 
@@ -43,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
                 return null;
             }
         };
-        //Create RecyclerView adapter and set it to the RecyclerView
-        CardAdapter adapter = new CardAdapter(this, cards);
-        recycle.setAdapter(adapter);
+        //Initialize mAdapter and set it to the RecyclerView
+        mAdapter = new CardAdapter(this, cards);
+        recycle.setAdapter(mAdapter);
         //Set has fixed size value and layout manager
         recycle.setHasFixedSize(true);
         recycle.setLayoutManager(layout);
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         fetchData();
 
 
-        if (adapter.getItemCount() > 0) {
+        if (mAdapter.getItemCount() > 0) {
             emptyText.setVisibility(View.GONE);
             recycle.setVisibility(View.VISIBLE);
 
@@ -112,7 +114,12 @@ public class MainActivity extends AppCompatActivity {
                 cards.add(new Card(id, bookTitle, bookAuthor, bookPrice, bookQuantity, bookSupName, bookSupPhone));
 
 
+
+
+
             }
+            //Notify adapter of change
+
             cursor.close();
         }
 
