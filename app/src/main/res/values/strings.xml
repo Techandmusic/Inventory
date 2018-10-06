@@ -9,7 +9,7 @@
     <string name="supplier_name_field">Supplier Name</string>
     <string name="supplier_phone_field">Supplier Phone No</string>
     <string name="save_error">Error with saving book</string>
-    <string name="save_successful">Book saved with row id: </string>
+    <string name="save_successful">Book saved successfully </string>
     <string name="confirm_delete">Delete this book?</string>
     <string name="delete_dialog_option">Delete</string>
     <string name="negative_dialog_option">Cancel</string>
@@ -25,7 +25,8 @@
     <string name="save_button_text">SAVE</string>
     <string name="new_book">Add New Book</string>
     <string name="edit_book">Edit Book Info</string>
-    <string name="details">Book Details</string>
+    <string name="details">Details</string>
     <string name="cursor_empty">No data in cursor to show</string>
+
 
 </resources>

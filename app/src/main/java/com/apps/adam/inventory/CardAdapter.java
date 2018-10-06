@@ -1,11 +1,15 @@
 package com.apps.adam.inventory;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -13,6 +17,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder> {
     private ArrayList<Card> cards;
     private Context context;
     private LayoutInflater inflater;
+    private Uri mCurrentBookUri;
+   
 
     public CardAdapter(Context context, ArrayList<Card> cards) {
         this.inflater = LayoutInflater.from(context);
@@ -32,17 +38,19 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder> {
     }
 
     @Override
-    public void onBindViewHolder(CardHolder holder, int position) {
+    public void onBindViewHolder(final CardHolder holder, int position) {
         Card currentCard = cards.get(position);
         holder.cardTitle.setText(currentCard.getTitle());
-        holder.cardPrice.setText(currentCard.getPrice().toString());
-        holder.cardQuantity.setText(Integer.toString(currentCard.getQuantity()));
+        holder.cardPrice.setText("$" + currentCard.getPrice().toString());
+        holder.cardQuantity.setText("In Stock: " + Integer.toString(currentCard.getQuantity()));
+
 
     }
 
+
     public void swapData(ArrayList<Card> data) {
-            this.cards = data;
-            notifyDataSetChanged();
+        this.cards = data;
+        notifyDataSetChanged();
 
     }
 
@@ -52,6 +60,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder> {
         public TextView cardPrice;
         public TextView cardQuantity;
 
+
         //CardHolder constructor
         public CardHolder(View cardView) {
             super(cardView);
@@ -59,6 +68,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder> {
             cardTitle = (TextView) cardView.findViewById(R.id.productName);
             cardPrice = (TextView) cardView.findViewById(R.id.productPrice);
             cardQuantity = (TextView) cardView.findViewById(R.id.productQuantity);
+
+
+
         }
 
 

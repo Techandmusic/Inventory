@@ -1,14 +1,18 @@
 package com.apps.adam.inventory;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.apps.adam.inventory.data.BookContract.BookEntry;
 import com.apps.adam.inventory.data.BookDbHelper;
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     public CardAdapter mAdapter;
 
+    private Uri mCurrentBookUri;
 
     private BookDbHelper mDbHelper;
 
@@ -74,7 +79,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
+
     }
+
+    public void onClickSale() {
+        //Get text as string
+        TextView quantityText = findViewById(R.id.productQuantity);
+        String quantity = quantityText.getText().toString();
+        int currentQuantity = Integer.parseInt(quantity);
+        int newQuantity = currentQuantity - 1;
+        quantityText.setText(newQuantity);
+    }
+
+
+
 
     public void fetchData() {
         //Projection of columns to load
@@ -123,6 +143,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
 
 }

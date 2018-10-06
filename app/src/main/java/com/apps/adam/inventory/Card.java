@@ -1,6 +1,7 @@
 package com.apps.adam.inventory;
 
 
+import android.widget.Button;
 
 public class Card  {
 
@@ -11,6 +12,8 @@ public class Card  {
     private Integer Quantity;
     private String SupplierName;
     private String SupplierPhone;
+
+
 
     //Constructor method
     public Card(int id, String title, String author, Double price, int quantity, String supName, String supPhone) {
@@ -53,6 +56,10 @@ public class Card  {
     public String getSupplierPhone() {
         return SupplierPhone;
     }
+
+
+
+
 
 
 
