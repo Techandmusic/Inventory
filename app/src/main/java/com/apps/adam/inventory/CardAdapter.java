@@ -40,6 +40,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder> {
 
     }
 
+    public void swapData(ArrayList<Card> data) {
+            this.cards = data;
+            notifyDataSetChanged();
+
+    }
+
     //Inner CardHolder class
     public class CardHolder extends RecyclerView.ViewHolder {
         public TextView cardTitle;

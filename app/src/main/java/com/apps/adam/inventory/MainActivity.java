@@ -51,10 +51,11 @@ public class MainActivity extends AppCompatActivity {
         //Set has fixed size value and layout manager
         recycle.setHasFixedSize(true);
         recycle.setLayoutManager(layout);
-
-
         //Get data and load into cards ArrayList
         fetchData();
+
+
+
 
 
         if (mAdapter.getItemCount() > 0) {
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
             //Notify adapter of change
-
+            mAdapter.swapData(cards);
             cursor.close();
         }
 
