@@ -36,7 +36,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder> {
         Card currentCard = cards.get(position);
         holder.cardTitle.setText(currentCard.getTitle());
         holder.cardPrice.setText(currentCard.getPrice().toString());
-        holder.cardQuantity.setText(currentCard.getQuantity());
+        holder.cardQuantity.setText(Integer.toString(currentCard.getQuantity()));
 
     }
 

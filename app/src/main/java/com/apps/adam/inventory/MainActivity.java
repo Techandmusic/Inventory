@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -39,18 +40,14 @@ public class MainActivity extends AppCompatActivity {
         //CreateRecyclerView
         RecyclerView recycle = (RecyclerView) findViewById(R.id.recycler);
         //Initialize layout manager
-        layout = new RecyclerView.LayoutManager() {
-            @Override
-            public RecyclerView.LayoutParams generateDefaultLayoutParams() {
-                return null;
-            }
-        };
+
+
         //Initialize mAdapter and set it to the RecyclerView
         mAdapter = new CardAdapter(this, cards);
         recycle.setAdapter(mAdapter);
         //Set has fixed size value and layout manager
         recycle.setHasFixedSize(true);
-        recycle.setLayoutManager(layout);
+        recycle.setLayoutManager(new LinearLayoutManager(this));
         //Get data and load into cards ArrayList
         fetchData();
 
