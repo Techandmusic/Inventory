@@ -47,9 +47,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         //Get intent with book data
         Intent intent = getIntent();
         mCurrentBookUri = intent.getData();
-        //TODO Run query with current Uri to get data
 
-        //TODO Set text from query to TextViews
 
 
         Button increaseQuantity = (Button) findViewById(R.id.increase);
@@ -200,12 +198,6 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     }
 
     public void onLoaderReset(Loader<Cursor> loader) {
-        //If loader is invalidated clear all fields
-        bookTitle.setText("");
-        bookAuthor.setText("");
-        bookPrice.setText("");
-        bookQuantity.setText("");
-        bookSupplier.setText("");
-        bookSupPhone.setText("");
+
     }
 }

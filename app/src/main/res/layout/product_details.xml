@@ -2,129 +2,50 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/detailView"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/row1">
 
-        <TextView
-            style="@style/detail_style"
-            android:id="@+id/labelTitle"
-            android:text="@string/title_label"/>
-
-        <TextView
-            android:id="@+id/bookTitle"
-            style="@style/detail_style" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/row2">
-
-        <TextView
-            style="@style/detail_style"
-            android:id="@+id/labelAuthor"
-            android:text="@string/author_label"/>
-
-        <TextView
-            android:id="@+id/bookAuthor"
-            style="@style/detail_style" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/row3">
-
-        <TextView
-            style="@style/detail_style"
-            android:id="@+id/labelPrice"
-            android:text="@string/price_label"/>
-
-        <TextView
-            android:id="@+id/bookPrice"
-            style="@style/detail_style" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/row4">
-
-        <TextView
-            style="@style/detail_style"
-            android:id="@+id/labelQuantity"
-            android:text="@string/quantity_label"/>
-
-        <TextView
-            android:id="@+id/bookQuantity"
-            style="@style/detail_style" />
+    <TextView
+        android:id="@+id/bookTitle"
+        style="@style/detail_style" />
 
 
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/row5">
-
-        <TextView
-            style="@style/detail_style"
-            android:id="@+id/labelSupName"
-            android:text="@string/supplier_name_label"/>
-
-        <TextView
-            android:id="@+id/bookSupplier"
-            style="@style/detail_style" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/row6">
-
-        <TextView
-            style="@style/detail_style"
-            android:id="@+id/labelSupPhone"
-            android:text="@string/supplier_phone_label"/>
-
-        <TextView
-            android:id="@+id/bookSupPhone"
-            style="@style/detail_style" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/bookAuthor"
+        style="@style/detail_style"
+        android:layout_below="@+id/bookTitle" />
 
 
+    <TextView
+        android:id="@+id/bookPrice"
+        style="@style/detail_style"
+        android:layout_below="@+id/bookAuthor" />
 
 
+    <TextView
+        android:id="@+id/bookQuantity"
+        style="@style/detail_style"
+        android:layout_below="@+id/bookPrice" />
 
 
+    <TextView
+        android:id="@+id/bookSupplier"
+        style="@style/detail_style"
+        android:layout_below="@+id/bookQuantity" />
 
 
-
-
-
+    <TextView
+        android:id="@+id/bookSupPhone"
+        style="@style/detail_style"
+        android:layout_below="@+id/bookSupplier" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
         android:padding="@dimen/medium_spacing">
 
         <Button
@@ -148,7 +69,6 @@
             android:text="@string/delete_button" />
 
     </LinearLayout>
-
 
 
 </RelativeLayout>
