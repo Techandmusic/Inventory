@@ -6,7 +6,8 @@
     android:layout_marginLeft="@dimen/small_spacing"
     android:layout_marginTop="@dimen/corners"
     android:layout_marginRight="@dimen/small_spacing"
-    android:layout_marginBottom="@dimen/medium_spacing">
+    android:layout_marginBottom="@dimen/medium_spacing"
+    android:background="@drawable/list_divider">
 
     <TextView
         android:id="@+id/productName"
@@ -24,7 +25,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_below="@+id/productPrice"
+        android:orientation="horizontal"
+        android:id="@+id/stockContainer">
 
         <TextView
             android:id="@+id/productQuantity"
@@ -42,7 +45,8 @@
     <Button
         android:id="@+id/sale"
         style="@style/button_style"
-        android:text="@string/sale_button" />
+        android:text="@string/sale_button"
+        android:layout_below="@+id/stockContainer"/>
 
 
 
