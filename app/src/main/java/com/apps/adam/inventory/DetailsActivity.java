@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.apps.adam.inventory.data.BookContract.BookEntry;
 
 public class DetailsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+    //Loader constant
+    private static final int DETAILS_LOADER = 0;
     //Current Uri
     private Uri mCurrentBookUri;
     //TextView for title
@@ -89,6 +91,8 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             }
         });
 
+        getLoaderManager().initLoader(DETAILS_LOADER, null, this);
+
 
     }
 
@@ -114,8 +118,8 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         int quantityNumber = Integer.parseInt(quantityText);
         //Add 1 to current TextView Text
         int newQuantity = quantityNumber - 1;
-        if (newQuantity < 0) {
-            newQuantity = 0;
+        if (newQuantity == 0) {
+            Toast.makeText(this, R.string.zero_error, Toast.LENGTH_SHORT).show();
         }
         //Set the updated quantity text to the TextView
         bookQuantity.setText(Integer.toString(newQuantity));

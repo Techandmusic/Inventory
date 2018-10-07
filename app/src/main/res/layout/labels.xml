@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/labelTitle"
+        style="@style/label_style"
+        android:text="@string/title_label" />
+
+    <TextView
+        android:id="@+id/labelAuthor"
+        style="@style/label_style"
+        android:text="@string/author_label"
+        android:layout_below="@+id/labelTitle"/>
+
+    <TextView
+        android:id="@+id/labelPrice"
+        style="@style/label_style"
+        android:text="@string/price_label" />
+
+    <TextView
+        android:id="@+id/labelQuantity"
+        style="@style/label_style"
+        android:text="@string/quantity_label"
+        android:layout_below="@+id/labelPrice"/>
+
+    <TextView
+        android:id="@+id/labelSupName"
+        style="@style/label_style"
+        android:text="@string/supplier_name_label"
+        android:layout_below="@+id/labelQuantity"/>
+
+    <TextView
+        android:id="@+id/labelSupPhone"
+        style="@style/label_style"
+        android:text="@string/supplier_phone_label"
+        android:layout_below="@+id/labelSupName"/>
+
+</android.support.constraint.ConstraintLayout>
