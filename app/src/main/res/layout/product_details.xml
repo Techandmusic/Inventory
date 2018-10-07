@@ -5,47 +5,59 @@
     android:id="@+id/detailView"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/innerLayout">
 
-    <TextView
-        android:id="@+id/bookTitle"
-        style="@style/detail_style" />
-
-
-    <TextView
-        android:id="@+id/bookAuthor"
-        style="@style/detail_style"
-        android:layout_below="@+id/bookTitle" />
+        <TextView
+            android:id="@+id/bookTitle"
+            style="@style/detail_style" />
 
 
-    <TextView
-        android:id="@+id/bookPrice"
-        style="@style/detail_style"
-        android:layout_below="@+id/bookAuthor" />
+        <TextView
+            android:id="@+id/bookAuthor"
+            style="@style/detail_style"
+            android:layout_below="@+id/bookTitle" />
 
 
-    <TextView
-        android:id="@+id/bookQuantity"
-        style="@style/detail_style"
-        android:layout_below="@+id/bookPrice" />
+        <TextView
+            android:id="@+id/bookPrice"
+            style="@style/detail_style"
+            android:layout_below="@+id/bookAuthor" />
 
 
-    <TextView
-        android:id="@+id/bookSupplier"
-        style="@style/detail_style"
-        android:layout_below="@+id/bookQuantity" />
+        <TextView
+            android:id="@+id/bookQuantity"
+            style="@style/detail_style"
+            android:layout_below="@+id/bookPrice" />
 
 
-    <TextView
-        android:id="@+id/bookSupPhone"
-        style="@style/detail_style"
-        android:layout_below="@+id/bookSupplier" />
+        <TextView
+            android:id="@+id/bookSupplier"
+            style="@style/detail_style"
+            android:layout_below="@+id/bookQuantity" />
+
+
+        <TextView
+            android:id="@+id/bookSupPhone"
+            style="@style/detail_style"
+            android:layout_below="@+id/bookSupplier" />
+
+    </RelativeLayout>
+
+
+
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/buttonGroup2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/medium_spacing"
         android:orientation="horizontal"
+        android:id="@+id/buttonGroup1"
         android:padding="@dimen/medium_spacing">
 
         <Button
@@ -57,6 +69,21 @@
             android:id="@+id/decrease"
             style="@style/button_style"
             android:text="@string/decrease_button" />
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/medium_spacing"
+        android:id="@+id/buttonGroup2">
 
         <Button
             android:id="@+id/order"
