@@ -49,15 +49,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/productQuantity"
-           android:layout_marginLeft="@dimen/xl_spacing"
+            android:layout_marginLeft="@dimen/xl_spacing"
             android:layout_marginTop="@dimen/small_spacing"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/sale"
                 style="@style/button_style"
-                android:text="@string/sale_button"
-                android:focusable="false"/>
+                android:text="@string/sale_button" />
 
             <Button
                 android:id="@+id/detailsButton"

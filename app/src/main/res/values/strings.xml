@@ -27,6 +27,7 @@
     <string name="edit_book">Edit Book Info</string>
     <string name="details">Details</string>
     <string name="cursor_empty">No data in cursor to show</string>
+    <string name="stock_label"> in stock</string>
 
 
 </resources>
