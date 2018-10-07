@@ -32,7 +32,6 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_details);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
         //Set TextViews to xml layout
         bookTitle = findViewById(R.id.bookTitle);
         bookAuthor = findViewById(R.id.bookAuthor);
@@ -44,7 +43,10 @@ public class DetailsActivity extends AppCompatActivity {
         //Get intent with book data
         Intent intent = getIntent();
         mCurrentBookUri = intent.getData();
-        //TODO finish filling in this activity
+        //TODO Run query with current Uri to get data
+
+        //TODO Set text from query to TextViews
+
 
         Button increaseQuantity = (Button) findViewById(R.id.increase);
         increaseQuantity.setOnClickListener(new View.OnClickListener() {

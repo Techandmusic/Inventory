@@ -7,6 +7,7 @@
     android:layout_marginTop="@dimen/corners"
     android:layout_marginRight="@dimen/small_spacing"
     android:layout_marginBottom="@dimen/medium_spacing"
+    android:descendantFocusability="blocksDescendants"
     android:background="@drawable/list_divider">
 
     <TextView
@@ -47,6 +48,8 @@
         style="@style/button_style"
         android:text="@string/sale_button"
         android:layout_below="@+id/stockContainer"/>
+
+
 
 
 

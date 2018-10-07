@@ -1,7 +1,10 @@
 package com.apps.adam.inventory;
 
+import android.app.Activity;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -18,6 +21,8 @@ import com.apps.adam.inventory.data.BookContract.BookEntry;
 public class BookCursorAdapter extends CursorAdapter {
     //Context variable
     private Context mContext;
+
+    private Activity main_activity;
 
     //Initialize TextViews
 
@@ -43,7 +48,7 @@ public class BookCursorAdapter extends CursorAdapter {
         final TextView quantityTextView = view.findViewById(R.id.productQuantity);
         //Create int variables for column indices
         int idColumnIndex = cursor.getColumnIndex(BookContract.BookEntry._ID);
-        int nameColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_PRODUCT_NAME);
+        final int nameColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_PRODUCT_NAME);
         int priceColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_PRICE);
         int quantityColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_QUANTITY);
         //Extract column indices to appropriate variables
@@ -75,6 +80,8 @@ public class BookCursorAdapter extends CursorAdapter {
                 }
             }
         });
+
+
 
 
     }
