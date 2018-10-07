@@ -1,7 +1,11 @@
 package com.apps.adam.inventory;
 
+import android.app.LoaderManager;
 import android.content.ContentValues;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.apps.adam.inventory.data.BookContract.BookEntry;
 
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     //Current Uri
     private Uri mCurrentBookUri;
     //TextView for title
@@ -149,5 +153,59 @@ public class DetailsActivity extends AppCompatActivity {
         if (rowsAffected == 0) {
             Toast.makeText(this, getString(R.string.save_error), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        String[] projection = {
+                BookEntry._ID,
+                BookEntry.COLUMN_PRODUCT_NAME,
+                BookEntry.COLUMN_AUTHOR_NAME,
+                BookEntry.COLUMN_PRICE,
+                BookEntry.COLUMN_QUANTITY,
+                BookEntry.COLUMN_SUPPLIER_NAME,
+                BookEntry.COLUMN_SUPPLIER_PHONE};
+        return new CursorLoader(this, mCurrentBookUri, projection, null, null, null);
+    }
+
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        // Bail early if the cursor is null or there is less than 1 row in the cursor
+        if (cursor == null || cursor.getCount() < 1) {
+            return;
+        }
+        //Proceed with moving to the first row of the cursor and reading its data
+        //this should be the only row in the cursor
+        if (cursor.moveToFirst()) {
+            //Get the column indices we're interested in
+            int titleColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_NAME);
+            int authorColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_AUTHOR_NAME);
+            int priceColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRICE);
+            int quantityColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_QUANTITY);
+            int supNameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_SUPPLIER_NAME);
+            int supPhoneColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_SUPPLIER_PHONE);
+            //Extract the value for each given column index
+            String Title = cursor.getString(titleColumnIndex);
+            String Author = cursor.getString(authorColumnIndex);
+            Double Price = cursor.getDouble(priceColumnIndex);
+            int Quantity = cursor.getInt(quantityColumnIndex);
+            String SupplierName = cursor.getString(supNameColumnIndex);
+            String SupplierPhone = cursor.getString(supPhoneColumnIndex);
+            //Update the views with the values from the database
+            bookTitle.setText(Title);
+            bookAuthor.setText(Author);
+            bookPrice.setText(Double.toString(Price));
+            bookQuantity.setText(Integer.toString(Quantity));
+            bookSupplier.setText(SupplierName);
+            bookSupPhone.setText(SupplierPhone);
+        }
+    }
+
+    public void onLoaderReset(Loader<Cursor> loader) {
+        //If loader is invalidated clear all fields
+        bookTitle.setText("");
+        bookAuthor.setText("");
+        bookPrice.setText("");
+        bookQuantity.setText("");
+        bookSupplier.setText("");
+        bookSupPhone.setText("");
     }
 }
