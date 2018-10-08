@@ -66,22 +66,27 @@ public class BookCursorAdapter extends CursorAdapter {
         saleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int newQuantity;
-                if (bookQuantity == 0) {
-                    newQuantity = 0;
-                } else {
-                    newQuantity = bookQuantity - 1;
-                }
-                ContentValues values = new ContentValues();
-                values.put(BookEntry.COLUMN_QUANTITY, newQuantity);
-                quantityTextView.setText(Integer.toString(newQuantity));
-                Uri currentUri = Uri.withAppendedPath(BookEntry.CONTENT_URI, id);
-                mContext.getContentResolver().update(currentUri, values, null, null);
+                decrementQuantity(bookQuantity, id);
             }
         });
 
 
 
+
+
+
+    }
+
+    public void decrementQuantity(int quantity, String id) {
+        if (quantity >= 1) {
+            quantity --;
+        } else {
+            quantity = 0;
+        }
+        ContentValues values = new ContentValues();
+        values.put(BookEntry.COLUMN_QUANTITY, quantity);
+        Uri currentUri = Uri.withAppendedPath(BookEntry.CONTENT_URI, id);
+        mContext.getContentResolver().update(currentUri, values, null, null);
 
     }
 }

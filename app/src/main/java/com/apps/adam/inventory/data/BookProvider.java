@@ -204,8 +204,8 @@ public class BookProvider extends ContentProvider {
         }
         if (values.containsKey(BookContract.BookEntry.COLUMN_QUANTITY)) {
             int quantity = values.getAsInteger(BookContract.BookEntry.COLUMN_QUANTITY);
-            if (quantity == 0) {
-                throw new IllegalArgumentException("Please enter quantity in stock");
+            if (quantity < 0) {
+                quantity = 0;
             }
         }
         if (values.containsKey(BookContract.BookEntry.COLUMN_SUPPLIER_NAME)) {

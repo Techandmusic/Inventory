@@ -10,7 +10,7 @@
     <string name="supplier_phone_field">Supplier Phone No</string>
     <string name="save_error">Error with saving book</string>
     <string name="save_successful">Book saved successfully </string>
-    <string name="confirm_delete">Delete this book?</string>
+    <string name="confirm_delete">Delete This Book?</string>
     <string name="delete_dialog_option">Delete</string>
     <string name="negative_dialog_option">Cancel</string>
     <string name="delete_successful">Book deleted</string>

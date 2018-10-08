@@ -1,9 +1,11 @@
 package com.apps.adam.inventory;
 
+import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
@@ -88,7 +90,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteBook();
+                showDeleteConfirmationDialog();
             }
         });
 
@@ -113,6 +115,34 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
 
     }
 
+    public void showDeleteConfirmationDialog() {
+        //Create new alert dialog builder and set messages and
+        //listeners for its positive and negative buttons
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.confirm_delete);
+        builder.setPositiveButton(R.string.delete_dialog_option, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //User clicked delete button, so delete the book
+                deleteBook();
+            }
+        });
+        builder.setNegativeButton(R.string.negative_dialog_option, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //User clicked cancel button so dismiss the dialog
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+
+        //Create and show the alert dialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+    }
+
     public void addQuantity() {
         //Get TextView text as a String variable
         String quantityText = bookQuantity.getText().toString();
@@ -133,16 +163,17 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         String quantityText = bookQuantity.getText().toString();
         //Convert String to Integer variable
         int quantityNumber = Integer.parseInt(quantityText);
-        //Add 1 to current TextView Text
-        int newQuantity = quantityNumber - 1;
-        if (newQuantity == 0) {
-            Toast.makeText(this, R.string.zero_error, Toast.LENGTH_SHORT).show();
+        //Decrement current TextView Text
+        if (quantityNumber >= 1) {
+            quantityNumber --;
+        } else {
+            quantityNumber = 0;
         }
         //Set the updated quantity text to the TextView
-        bookQuantity.setText(Integer.toString(newQuantity));
+        bookQuantity.setText(Integer.toString(quantityNumber));
         //Update database with new value
         ContentValues values = new ContentValues();
-        values.put(BookEntry.COLUMN_QUANTITY, newQuantity);
+        values.put(BookEntry.COLUMN_QUANTITY, quantityNumber);
         this.getContentResolver().update(mCurrentBookUri, values, null, null);
 
     }
@@ -156,6 +187,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                 Toast.makeText(this, getString(R.string.delete_successful), Toast.LENGTH_SHORT).show();
             }
         }
+        finish();
     }
 
     public void updateBookInfo() {
