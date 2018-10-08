@@ -25,16 +25,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final int BOOK_LOADER = 0;
     //Database helper object
     private BookDbHelper mDbHelper;
-    //ListView for books
-    private ListView productView;
     //CursorAdapter
     private BookCursorAdapter mCursorAdapter;
     //TextView for Book Quantity
     private TextView bookQuantity;
     //TextView for book title
     private TextView bookTitle;
-    //Uri variable
-    private Uri mCurrentBookUri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
 
-        //  fetchData();
+
         bookQuantity = (TextView) findViewById(R.id.productQuantity);
         bookTitle = (TextView) findViewById(R.id.productName);
 

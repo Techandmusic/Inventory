@@ -98,8 +98,6 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             @Override
             public void onClick(View v) {
                 Intent editorIntent = new Intent(DetailsActivity.this, EditBookActivity.class);
-                //Set URI
-                // Uri currentBookUri = mCurrentBookUri;
                 //Call intent.setData with Uri passed as argument
                 editorIntent.setData(mCurrentBookUri);
                 //startActivity

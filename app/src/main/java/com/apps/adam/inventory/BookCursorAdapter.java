@@ -1,6 +1,5 @@
 package com.apps.adam.inventory;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -18,10 +17,6 @@ import com.apps.adam.inventory.data.BookContract.BookEntry;
 public class BookCursorAdapter extends CursorAdapter {
     //Context variable
     private Context mContext;
-
-    private Activity main_activity;
-
-    //Initialize TextViews
 
 
     //Class constructor
