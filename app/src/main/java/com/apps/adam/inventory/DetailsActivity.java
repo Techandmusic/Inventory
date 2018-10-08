@@ -1,6 +1,7 @@
 package com.apps.adam.inventory;
 
 import android.app.LoaderManager;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
@@ -91,7 +92,23 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             }
         });
 
+        Button edit = (Button) findViewById(R.id.edit);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent editorIntent = new Intent(DetailsActivity.this, EditBookActivity.class);
+                //Set URI
+                // Uri currentBookUri = mCurrentBookUri;
+                //Call intent.setData with Uri passed as argument
+                editorIntent.setData(mCurrentBookUri);
+                //startActivity
+                startActivity(editorIntent);
+            }
+        });
+
         getLoaderManager().initLoader(DETAILS_LOADER, null, this);
+
+
 
 
     }
@@ -202,6 +219,6 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     }
 
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        //Do nothing
     }
 }

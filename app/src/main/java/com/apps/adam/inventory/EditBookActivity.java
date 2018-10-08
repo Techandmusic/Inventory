@@ -1,6 +1,11 @@
 package com.apps.adam.inventory;
 
+import android.app.LoaderManager;
 import android.content.ContentValues;
+import android.content.CursorLoader;
+import android.content.Intent;
+import android.content.Loader;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +19,9 @@ import android.widget.Toast;
 import com.apps.adam.inventory.data.BookContract.BookEntry;
 import com.apps.adam.inventory.data.BookDbHelper;
 
-public class EditBookActivity extends AppCompatActivity {
+public class EditBookActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+    //Loader constant
+    private static final int CURRENT_BOOK_LOADER = 0;
     //EditText field to add book title
     private EditText mTitle;
     //EditText field to add book author
@@ -39,7 +46,6 @@ public class EditBookActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editor);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
         //Set TextViews to xml layout
         mTitle = findViewById(R.id.addTitle);
         mAuthor = findViewById(R.id.addAuthor);
@@ -47,13 +53,20 @@ public class EditBookActivity extends AppCompatActivity {
         mQuantity = findViewById(R.id.addQuantity);
         mSupplierName = findViewById(R.id.addSupplierName);
         mSupplierNo = findViewById(R.id.addSupplierNo);
+        //Get the incoming data
+        Intent intent = getIntent();
+        mCurrentBookUri = intent.getData();
+
+
         Button saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                saveBook();
             }
         });
+
+        getLoaderManager().initLoader(CURRENT_BOOK_LOADER, null, this);
 
     }
 
@@ -93,12 +106,6 @@ public class EditBookActivity extends AppCompatActivity {
         values.put(BookEntry.COLUMN_SUPPLIER_NAME, supNameString);
         values.put(BookEntry.COLUMN_SUPPLIER_PHONE, supPhoneString);
 
-        Uri newUri = getContentResolver().insert(BookEntry.CONTENT_URI, values);
-        if (newUri == null) {
-            Toast.makeText(this, getString(R.string.save_error), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
-        }
 
         rowsAffected = getContentResolver().update(mCurrentBookUri, values, null, null);
 
@@ -108,5 +115,58 @@ public class EditBookActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        String[] projection = {
+                BookEntry._ID,
+                BookEntry.COLUMN_PRODUCT_NAME,
+                BookEntry.COLUMN_AUTHOR_NAME,
+                BookEntry.COLUMN_PRICE,
+                BookEntry.COLUMN_QUANTITY,
+                BookEntry.COLUMN_SUPPLIER_NAME,
+                BookEntry.COLUMN_SUPPLIER_PHONE};
+        return new CursorLoader(this, mCurrentBookUri, projection, null, null, null);
+    }
+
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        // Bail early if the cursor is null or there is less than 1 row in the cursor
+        if (cursor == null || cursor.getCount() < 1) {
+            return;
+        }
+        if (cursor.moveToFirst()) {
+            //Get the column indices we're interested in
+            int titleColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_NAME);
+            int authorColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_AUTHOR_NAME);
+            int priceColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRICE);
+            int quantityColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_QUANTITY);
+            int supNameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_SUPPLIER_NAME);
+            int supPhoneColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_SUPPLIER_PHONE);
+            //Extract the value for each given column index
+            String Title = cursor.getString(titleColumnIndex);
+            String Author = cursor.getString(authorColumnIndex);
+            Double Price = cursor.getDouble(priceColumnIndex);
+            int Quantity = cursor.getInt(quantityColumnIndex);
+            String SupplierName = cursor.getString(supNameColumnIndex);
+            String SupplierPhone = cursor.getString(supPhoneColumnIndex);
+            //Update the EditText fields with the values from the database
+            mTitle.setText(Title);
+            mAuthor.setText(Author);
+            mPrice.setText(Double.toString(Price));
+            mQuantity.setText(Integer.toString(Quantity));
+            mSupplierName.setText(SupplierName);
+            mSupplierNo.setText(SupplierPhone);
+        }
+
+    }
+
+    public void onLoaderReset(Loader<Cursor> loader) {
+        //If the loader is invalidated set fields to empty strings
+        mTitle.setText("");
+        mAuthor.setText("");
+        mPrice.setText("");
+        mQuantity.setText("");
+        mSupplierName.setText("");
+        mSupplierNo.setText("");
     }
 }

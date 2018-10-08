@@ -19,11 +19,7 @@
         style="@style/label_style"
         android:text="@string/price_label" />
 
-    <TextView
-        android:id="@+id/labelQuantity"
-        style="@style/label_style"
-        android:text="@string/quantity_label"
-        android:layout_below="@+id/labelPrice"/>
+
 
     <TextView
         android:id="@+id/labelSupName"

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/detailView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/detailView"
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/innerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/innerLayout">
+        android:layout_marginLeft="@dimen/small_spacing">
 
         <TextView
             android:id="@+id/bookTitle"
@@ -26,17 +27,35 @@
             style="@style/detail_style"
             android:layout_below="@+id/bookAuthor" />
 
+        <Button
+            android:id="@+id/increase"
+            style="@style/button_style"
+            android:layout_below="@+id/bookPrice"
+            android:text="@string/increase_button" />
+
 
         <TextView
             android:id="@+id/bookQuantity"
             style="@style/detail_style"
-            android:layout_below="@+id/bookPrice" />
+            android:layout_below="@+id/increase" />
+
+        <TextView
+            android:id="@+id/labelQuantity"
+            style="@style/label_style"
+            android:layout_toLeftOf="@+id/bookQuantity"
+            android:text="@string/quantity_label" />
+
+        <Button
+            android:id="@+id/decrease"
+            style="@style/button_style"
+            android:layout_below="@+id/bookQuantity"
+            android:text="@string/decrease_button" />
 
 
         <TextView
             android:id="@+id/bookSupplier"
             style="@style/detail_style"
-            android:layout_below="@+id/bookQuantity" />
+            android:layout_below="@+id/decrease" />
 
 
         <TextView
@@ -47,43 +66,14 @@
     </RelativeLayout>
 
 
-
-
-
     <LinearLayout
+        android:id="@+id/buttonGroup2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonGroup2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/medium_spacing"
-        android:orientation="horizontal"
-        android:id="@+id/buttonGroup1"
-        android:padding="@dimen/medium_spacing">
-
-        <Button
-            android:id="@+id/increase"
-            style="@style/button_style"
-            android:text="@string/increase_button" />
-
-        <Button
-            android:id="@+id/decrease"
-            style="@style/button_style"
-            android:text="@string/decrease_button" />
-
-
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:padding="@dimen/medium_spacing"
-        android:id="@+id/buttonGroup2">
+        android:orientation="horizontal"
+        android:padding="@dimen/medium_spacing">
 
         <Button
             android:id="@+id/order"
@@ -94,6 +84,11 @@
             android:id="@+id/delete"
             style="@style/button_style"
             android:text="@string/delete_button" />
+
+        <Button
+            android:id="@+id/edit"
+            style="@style/button_style"
+            android:text="@string/edit_button" />
 
     </LinearLayout>
 

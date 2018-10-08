@@ -15,10 +15,11 @@
     <string name="negative_dialog_option">Cancel</string>
     <string name="delete_successful">Book deleted</string>
     <string name="delete_failed">Error with deleting book</string>
-    <string name="increase_button">Quantity +</string>
-    <string name="decrease_button">Quantity -</string>
+    <string name="increase_button">+</string>
+    <string name="decrease_button">-</string>
     <string name="order_button">Order</string>
     <string name="delete_button">Delete</string>
+    <string name="edit_button">Edit</string>
     <string name="sale_button">Sale</string>
     <string name="default_text">Tap Add Button to Add Items</string>
     <string name="zero_error">Quantity cannot be less than zero!</string>
@@ -31,7 +32,7 @@
     <string name="title_label">Title: </string>
     <string name="author_label">Author: </string>
     <string name="price_label">Price: </string>
-    <string name="quantity_label">Quantity: </string>
+    <string name="quantity_label">Qty: </string>
     <string name="supplier_name_label">Supplier Name: </string>
     <string name="supplier_phone_label">Supplier Phone: </string>
 
