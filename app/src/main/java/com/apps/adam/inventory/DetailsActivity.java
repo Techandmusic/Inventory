@@ -2,7 +2,6 @@ package com.apps.adam.inventory;
 
 import android.app.AlertDialog;
 import android.app.LoaderManager;
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
@@ -17,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.apps.adam.inventory.data.BookContract.BookEntry;
 
 public class DetailsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -52,7 +52,6 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         //Get intent with book data
         Intent intent = getIntent();
         mCurrentBookUri = intent.getData();
-
 
 
         Button increaseQuantity = (Button) findViewById(R.id.increase);
@@ -111,8 +110,6 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         getLoaderManager().initLoader(DETAILS_LOADER, null, this);
 
 
-
-
     }
 
     public void showDeleteConfirmationDialog() {
@@ -165,7 +162,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         int quantityNumber = Integer.parseInt(quantityText);
         //Decrement current TextView Text
         if (quantityNumber >= 1) {
-            quantityNumber --;
+            quantityNumber--;
         } else {
             quantityNumber = 0;
         }

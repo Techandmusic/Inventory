@@ -1,8 +1,9 @@
 package com.apps.adam.inventory.data;
 
-import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
 import com.apps.adam.inventory.data.BookContract.BookEntry;
 
 
@@ -10,6 +11,7 @@ public class BookDbHelper extends SQLiteOpenHelper {
     //Database name and version constants
     public static final String DATABASE_NAME = "bookstore.db";
     public static final int DATABASE_VERSION = 1;
+
     //Class constructor
     public BookDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

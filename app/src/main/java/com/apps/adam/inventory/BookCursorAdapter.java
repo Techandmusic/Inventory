@@ -1,10 +1,8 @@
 package com.apps.adam.inventory;
 
 import android.app.Activity;
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -13,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.apps.adam.inventory.data.BookContract;
 import com.apps.adam.inventory.data.BookContract.BookEntry;
@@ -71,15 +68,11 @@ public class BookCursorAdapter extends CursorAdapter {
         });
 
 
-
-
-
-
     }
 
     public void decrementQuantity(int quantity, String id) {
         if (quantity >= 1) {
-            quantity --;
+            quantity--;
         } else {
             quantity = 0;
         }

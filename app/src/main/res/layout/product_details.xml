@@ -15,22 +15,22 @@
         <TextView
             android:id="@+id/bookTitle"
             style="@style/detail_style"
-            tools:text="yabba"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            tools:text="yabba" />
 
 
         <TextView
             android:id="@+id/bookAuthor"
             style="@style/detail_style"
             android:layout_below="@+id/bookTitle"
-            tools:text="dabba"/>
+            tools:text="dabba" />
 
 
         <TextView
             android:id="@+id/bookPrice"
             style="@style/detail_style"
             android:layout_below="@+id/bookAuthor"
-            tools:text="9.99"/>
+            tools:text="9.99" />
 
         <Button
             android:id="@+id/increase"
@@ -39,11 +39,11 @@
             android:text="@string/increase_button" />
 
         <LinearLayout
+            android:id="@+id/qtyRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/qtyRow"
-            android:layout_below="@+id/increase">
+            android:layout_below="@+id/increase"
+            android:orientation="horizontal">
 
 
             <TextView
@@ -54,11 +54,9 @@
             <TextView
                 android:id="@+id/bookQuantity"
                 style="@style/detail_style"
-                tools:text="7"/>
+                tools:text="7" />
 
         </LinearLayout>
-
-
 
 
         <Button
@@ -72,14 +70,14 @@
             android:id="@+id/bookSupplier"
             style="@style/detail_style"
             android:layout_below="@+id/decrease"
-            tools:text="doo"/>
+            tools:text="doo" />
 
 
         <TextView
             android:id="@+id/bookSupPhone"
             style="@style/detail_style"
             android:layout_below="@+id/bookSupplier"
-            tools:text="18005551234"/>
+            tools:text="18005551234" />
 
     </RelativeLayout>
 
@@ -90,10 +88,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/medium_spacing"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/medium_spacing"
-        android:paddingRight="@dimen/medium_spacing"
-        android:layout_marginTop="@dimen/medium_spacing">
+        android:paddingRight="@dimen/medium_spacing">
 
         <Button
             android:id="@+id/order"

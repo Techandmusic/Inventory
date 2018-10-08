@@ -13,8 +13,7 @@ import android.widget.Toast;
 import com.apps.adam.inventory.data.BookContract.BookEntry;
 
 public class AddBookActivity extends AppCompatActivity {
-    //Variable for rows affected when adding a new book
-    int rowsAffected;
+
     //EditText field to add book title
     private EditText mTitle;
     //EditText field to add book author
@@ -27,8 +26,7 @@ public class AddBookActivity extends AppCompatActivity {
     private EditText mSupplierName;
     //EditText field to add supplier's phone number
     private EditText mSupplierNo;
-    //Variable for current book uri
-    private Uri mCurrentBookUri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,16 +70,13 @@ public class AddBookActivity extends AppCompatActivity {
         }
 
         //Input validation check
-        if (TextUtils.isEmpty(titleString) || TextUtils.isEmpty(authorString) || TextUtils.isEmpty(priceDouble ) ||
+        if (TextUtils.isEmpty(titleString) || TextUtils.isEmpty(authorString) || TextUtils.isEmpty(priceDouble) ||
                 TextUtils.isEmpty(supNameString) || TextUtils.isEmpty(supPhoneString)) {
             //Give user warning message
             Toast.makeText(this, R.string.empty_field_warning, Toast.LENGTH_SHORT).show();
             //Return early so that incomplete book is not added to database
             return;
         }
-
-
-
 
 
         //Create a ContentValues object where column names are keys and
@@ -100,8 +95,9 @@ public class AddBookActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.save_error), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
-            finish();
+
         }
+        finish();
 
 
     }

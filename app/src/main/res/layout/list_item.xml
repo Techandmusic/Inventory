@@ -8,15 +8,15 @@
     android:layout_marginTop="@dimen/small_spacing"
     android:layout_marginRight="@dimen/medium_spacing"
     android:layout_marginBottom="@dimen/medium_spacing"
-    android:descendantFocusability="blocksDescendants"
-    android:background="@drawable/list_divider">
+    android:background="@drawable/list_divider"
+    android:descendantFocusability="blocksDescendants">
 
     <TextView
         android:id="@+id/productName"
         style="@style/list_item_style"
         android:textSize="@dimen/large_text"
         android:textStyle="bold"
-        tools:text="Title"/>
+        tools:text="Title" />
 
 
     <TextView
@@ -24,40 +24,37 @@
         style="@style/list_item_style"
         android:layout_below="@id/productName"
         android:textSize="@dimen/medium_text"
-        tools:text="author jones"/>
+        tools:text="author jones" />
 
     <LinearLayout
+        android:id="@+id/stockContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/productPrice"
-        android:orientation="horizontal"
         android:layout_marginLeft="@dimen/medium_spacing"
         android:layout_marginRight="@dimen/medium_spacing"
-        android:id="@+id/stockContainer">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/productQuantity"
             style="@style/in_stock_style"
             android:textSize="@dimen/medium_text"
-            tools:text="7"/>
+            tools:text="7" />
 
         <TextView
             android:id="@+id/stockLabel"
             style="@style/in_stock_style"
-            android:textSize="@dimen/medium_text"
-            android:text="@string/stock_label"/>
+            android:text="@string/stock_label"
+            android:textSize="@dimen/medium_text" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/sale"
         style="@style/button_style"
-        android:text="@string/sale_button"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"/>
-
-
-
+        android:layout_centerVertical="true"
+        android:text="@string/sale_button" />
 
 
 </RelativeLayout>

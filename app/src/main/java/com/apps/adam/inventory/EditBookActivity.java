@@ -22,6 +22,8 @@ import com.apps.adam.inventory.data.BookDbHelper;
 public class EditBookActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     //Loader constant
     private static final int CURRENT_BOOK_LOADER = 0;
+    //Variable for rows affected when adding a new book
+    int rowsAffected;
     //EditText field to add book title
     private EditText mTitle;
     //EditText field to add book author
@@ -34,9 +36,6 @@ public class EditBookActivity extends AppCompatActivity implements LoaderManager
     private EditText mSupplierName;
     //EditText field to add supplier's phone number
     private EditText mSupplierNo;
-    //Variable for rows affected when adding a new book
-    //Variable for rows affected when adding a new book
-    int rowsAffected;
     //Database helper instance
     private BookDbHelper mDbHelper;
     //Variable for current book uri
@@ -96,7 +95,7 @@ public class EditBookActivity extends AppCompatActivity implements LoaderManager
         }
 
         //Input validation check
-        if (TextUtils.isEmpty(titleString) || TextUtils.isEmpty(authorString) || TextUtils.isEmpty(priceDouble ) ||
+        if (TextUtils.isEmpty(titleString) || TextUtils.isEmpty(authorString) || TextUtils.isEmpty(priceDouble) ||
                 TextUtils.isEmpty(supNameString) || TextUtils.isEmpty(supPhoneString)) {
             //Give user warning message
             Toast.makeText(this, R.string.empty_field_warning, Toast.LENGTH_SHORT).show();
@@ -123,8 +122,9 @@ public class EditBookActivity extends AppCompatActivity implements LoaderManager
             Toast.makeText(this, getString(R.string.save_error), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
-            finish();
+
         }
+        finish();
     }
 
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {

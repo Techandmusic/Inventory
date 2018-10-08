@@ -12,7 +12,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -86,17 +85,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         });
 
 
-
         getLoaderManager().initLoader(BOOK_LOADER, null, this);
 
 
     }
-
-
-
-
-
-
 
 
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {

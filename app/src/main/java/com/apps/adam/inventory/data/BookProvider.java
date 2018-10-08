@@ -26,7 +26,7 @@ public class BookProvider extends ContentProvider {
     //Static initializer
     static {
         sUriMatcher.addURI(BookContract.CONTENT_AUTHORITY, PATH_BOOKS, BOOKS);
-        sUriMatcher.addURI(BookContract.CONTENT_AUTHORITY, PATH_BOOKS+"/#", BOOK_ID);
+        sUriMatcher.addURI(BookContract.CONTENT_AUTHORITY, PATH_BOOKS + "/#", BOOK_ID);
     }
 
     //Initializer provider and database helper
@@ -164,7 +164,6 @@ public class BookProvider extends ContentProvider {
         }
         return rowsDeleted;
     }
-
 
 
     @Override
