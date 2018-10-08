@@ -43,6 +43,16 @@
         <item name="android:padding">@dimen/small_spacing</item>
     </style>
 
+    <style name="in_stock_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/corners</item>
+        <item name="android:layout_marginRight">@dimen/corners</item>
+        <item name="android:layout_marginTop">@dimen/small_spacing</item>
+        <item name="android:layout_marginBottom">@dimen/small_spacing</item>
+        <item name="android:padding">@dimen/corners</item>
+    </style>
+
     <style name="detail_style">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>

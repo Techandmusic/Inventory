@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/max_width"
     android:layout_gravity="center"
@@ -14,30 +15,35 @@
         android:id="@+id/productName"
         style="@style/list_item_style"
         android:textSize="@dimen/large_text"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:text="Title"/>
 
 
     <TextView
         android:id="@+id/productPrice"
         style="@style/list_item_style"
         android:layout_below="@id/productName"
-        android:textSize="@dimen/medium_text" />
+        android:textSize="@dimen/medium_text"
+        tools:text="author jones"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/productPrice"
         android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/small_spacing"
+        android:layout_marginRight="@dimen/small_spacing"
         android:id="@+id/stockContainer">
 
         <TextView
             android:id="@+id/productQuantity"
-            style="@style/list_item_style"
-            android:textSize="@dimen/medium_text" />
+            style="@style/in_stock_style"
+            android:textSize="@dimen/medium_text"
+            tools:text="7"/>
 
         <TextView
             android:id="@+id/stockLabel"
-            style="@style/list_item_style"
+            style="@style/in_stock_style"
             android:textSize="@dimen/medium_text"
             android:text="@string/stock_label"/>
 
