@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/detailView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,55 +14,72 @@
 
         <TextView
             android:id="@+id/bookTitle"
-            style="@style/detail_style" />
+            style="@style/detail_style"
+            tools:text="yabba"
+            android:textStyle="bold"/>
 
 
         <TextView
             android:id="@+id/bookAuthor"
             style="@style/detail_style"
-            android:layout_below="@+id/bookTitle" />
+            android:layout_below="@+id/bookTitle"
+            tools:text="dabba"/>
 
 
         <TextView
             android:id="@+id/bookPrice"
             style="@style/detail_style"
-            android:layout_below="@+id/bookAuthor" />
+            android:layout_below="@+id/bookAuthor"
+            tools:text="9.99"/>
 
         <Button
             android:id="@+id/increase"
-            style="@style/button_style"
+            style="@style/adjustment_buttons"
             android:layout_below="@+id/bookPrice"
             android:text="@string/increase_button" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/qtyRow"
+            android:layout_below="@+id/increase">
 
-        <TextView
-            android:id="@+id/bookQuantity"
-            style="@style/detail_style"
-            android:layout_below="@+id/increase" />
 
-        <TextView
-            android:id="@+id/labelQuantity"
-            style="@style/label_style"
-            android:layout_toLeftOf="@+id/bookQuantity"
-            android:text="@string/quantity_label" />
+            <TextView
+                android:id="@+id/labelQuantity"
+                style="@style/label_style"
+                android:text="@string/quantity_label" />
+
+            <TextView
+                android:id="@+id/bookQuantity"
+                style="@style/detail_style"
+                tools:text="7"/>
+
+        </LinearLayout>
+
+
+
 
         <Button
             android:id="@+id/decrease"
-            style="@style/button_style"
-            android:layout_below="@+id/bookQuantity"
+            style="@style/adjustment_buttons"
+            android:layout_below="@+id/qtyRow"
             android:text="@string/decrease_button" />
 
 
         <TextView
             android:id="@+id/bookSupplier"
             style="@style/detail_style"
-            android:layout_below="@+id/decrease" />
+            android:layout_below="@+id/decrease"
+            tools:text="doo"/>
 
 
         <TextView
             android:id="@+id/bookSupPhone"
             style="@style/detail_style"
-            android:layout_below="@+id/bookSupplier" />
+            android:layout_below="@+id/bookSupplier"
+            tools:text="18005551234"/>
 
     </RelativeLayout>
 
@@ -73,7 +91,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:padding="@dimen/medium_spacing">
+        android:paddingLeft="@dimen/medium_spacing"
+        android:paddingRight="@dimen/medium_spacing"
+        android:layout_marginTop="@dimen/medium_spacing">
 
         <Button
             android:id="@+id/order"

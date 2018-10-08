@@ -70,12 +70,7 @@ public class AddBookActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(quantityInt)) {
             itemQuantity = Integer.parseInt(quantityInt);
         }
-        //Bail early if no data is present in EditText fields
-        if (mCurrentBookUri == null && TextUtils.isEmpty(titleString) && TextUtils.isEmpty(authorString) &&
-                TextUtils.isEmpty(priceDouble) && TextUtils.isEmpty(quantityInt) && TextUtils.isEmpty(supNameString) &&
-                TextUtils.isEmpty(supPhoneString)) {
-            return;
-        }
+
 
         //Create a ContentValues object where column names are keys and
         //book attributes are values
