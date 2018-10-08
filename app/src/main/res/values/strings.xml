@@ -35,6 +35,7 @@
     <string name="quantity_label">Qty: </string>
     <string name="supplier_name_label">Supplier Name: </string>
     <string name="supplier_phone_label">Supplier Phone: </string>
+    <string name="empty_field_warning">Do not leave any input fields blank</string>
 
 
 </resources>

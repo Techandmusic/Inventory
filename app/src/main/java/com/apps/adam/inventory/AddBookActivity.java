@@ -71,6 +71,18 @@ public class AddBookActivity extends AppCompatActivity {
             itemQuantity = Integer.parseInt(quantityInt);
         }
 
+        //Input validation check
+        if (TextUtils.isEmpty(titleString) || TextUtils.isEmpty(authorString) || TextUtils.isEmpty(priceDouble ) ||
+                TextUtils.isEmpty(supNameString) || TextUtils.isEmpty(supPhoneString)) {
+            //Give user warning message
+            Toast.makeText(this, R.string.empty_field_warning, Toast.LENGTH_SHORT).show();
+            //Return early so that incomplete book is not added to database
+            return;
+        }
+
+
+
+
 
         //Create a ContentValues object where column names are keys and
         //book attributes are values
@@ -88,6 +100,7 @@ public class AddBookActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.save_error), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
+            finish();
         }
 
 

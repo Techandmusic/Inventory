@@ -95,6 +95,15 @@ public class EditBookActivity extends AppCompatActivity implements LoaderManager
             return;
         }
 
+        //Input validation check
+        if (TextUtils.isEmpty(titleString) || TextUtils.isEmpty(authorString) || TextUtils.isEmpty(priceDouble ) ||
+                TextUtils.isEmpty(supNameString) || TextUtils.isEmpty(supPhoneString)) {
+            //Give user warning message
+            Toast.makeText(this, R.string.empty_field_warning, Toast.LENGTH_SHORT).show();
+            //Return early so that incomplete book is not updated in database
+            return;
+        }
+
         //Create a ContentValues object where column names are keys and
         //book attributes are values
         ContentValues values = new ContentValues();
@@ -114,6 +123,7 @@ public class EditBookActivity extends AppCompatActivity implements LoaderManager
             Toast.makeText(this, getString(R.string.save_error), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, getString(R.string.save_successful), Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 
